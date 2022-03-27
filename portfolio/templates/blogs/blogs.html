@@ -1,71 +1,37 @@
 {% extends "base.html" %}
-{% load static%}
- {% block main %}
-        <section class="section-blogs">
-            <div class="container">
-                <h1 class="heading-primary">My recent blogs &downharpoonright;</h1>
-            </div>
-            <div class="container">
-                <div class="blogs">
-                    <div class="blog-card">
-                        <div class="blog-card-text">
-                            <div class="blog-card-text-info">
-                                <h4 class="blog-title">PYTHON</h4>
-                                <p class="blog-subtitle"> Python is an interpreted high-level general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small- and large-scale projects.
-                                    Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented and functional programming. It is often described as a "batteries included" language due to its comprehensive standard library</p>
-                                <span class="blog-date">01 march 2022</span>
-                                </div>
-                                <div class="blog-link-info">
-                                    <a href="{% url  'blog_detail'%}"class="blog-link">Read more about this blog.&nearr;</a>
-                                    
-                                </div>
-                            </div>
-                            <div class="blog-card-img">
-                                <img src="{% static 'img/python.jpg'%}"alt=""class="img-responsive"/>
-                            </div>
-                        </div>
-                    
 
-                        <div class="blog-card">
-                            <div class="blog-card-text">
-                                <div class="blog-card-text-info">
-                                    <h4 class="blog-title">Javascript</h4>
-                                    <p class="blog-subtitle"> JavaScript (often shortened to JS) is a lightweight, interpreted, object-oriented language with first-class functions, and is best known as the scripting language for Web pages, but it's used in many non-browser environments as well. It is a prototype-based, multi-paradigm scripting language that is dynamic, and supports object-oriented, imperative, and functional programming stylesJavaScript runs on the client side of the web, which can be used to design / program how the web pages behave on the occurrence of an event. JavaScript is an easy to learn and also powerful scripting language, widely used for controlling web page behavior.</p>
-                                    <span class="blog-date">01 march 2022</span>
-                                    </div>
-                                    <div class="blog-link-info">
-                                        <a href="{% url 'blogdetailjava'%}"class="blog-link">Read more about this blog.&nearr;</a>
-                                        
-                                    </div>
-                                </div>
-                                <div class="blog-card-img">
-                                    <img src="{% static 'img/jva.jpg'%}"alt=""class="img-responsive"/>
-                                </div>
-                            </div>
-                        
-                        
-                            
-                     
-                            <div class="blog-card">
-                                <div class="blog-card-text">
-                                    <div class="blog-card-text-info">
-                                        <h4 class="blog-title">C++</h4>
-                                        <p class="blog-subtitle">C++ (said C plus plus) is an object-oriented computer language created by notable computer scientist Bjorne Stroustrop as part of the evolution of the C family of languages. It was developed as a cross-platform improvement of C to provide developers with a higher degree of control over memory and system resources. </p>
-                                        <span class="blog-date">01 march 2022</span>
-                                        </div>
-                                        <div class="blog-link-info">
-                                            <a href="{% url  'blogdetailc'%}"class="blog-link">Read more about this blog.&nearr;</a>
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="blog-card-img">
-                                        <img src="{% static 'img/c.png'%}"alt=""class="img-responsive"/>
-                                    </div>
-                                </div>
-
-                            
+{% block main %}
+      <section class="section-blogs">
+        <div class="container">
+          <h1 class="heading-primary">My Recent blogs &DownArrow;</h1>
+        </div>
+        <div class="container">
+          <div class="blogs">
+          {% for blog in blogs_list %}
+            <div class="blog-card">
+              <div class="blog-card-text">
+                <div class="blog-text-info">
+                  <h4 class="blog-title">{{blog.title}}</h4>
+                  <p class="blog-subtitle">
+                  {{blog.subtitle}}
+                  </p>
+                  <span class="blog-date">{{blog.date}} </span>
                 </div>
+                <div class="blog-link-info">
+                  <a href="{% url 'blog_detail' blog.id %}" class="blog-link">{{blog.btntext}}</a>
+                </div>
+              </div> 
+              {% load static %}
+              <div class="blog-card-img">
+                <img
+                  src="{% static blog.image %}"
+                  alt=""
+                  class="img-responsive"
+                />
+              </div>
             </div>
-        </section>
-{% endblock%}
-    
+          {% endfor %}
+          </div>
+        </div>
+      </section>
+{% endblock %}

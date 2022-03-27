@@ -226,6 +226,7 @@ Large: 1.8
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex: 1 0 50%;
 }
 
 .blog-title{
@@ -252,9 +253,7 @@ Large: 1.8
   color: var(--color-grey);
 }
 
-.blog-text-info{
 
-}
 .blog-link{
   font-family: var(--font-secondary);
   font-size: 1.8rem;
@@ -263,9 +262,7 @@ Large: 1.8
   color: var(--color-black);
 }
 
-.blog-card-img{
 
-}
 /* BLOG PAGE STYLING ENDS */
 
 /* BLOG DETAIL STYLING STARTS */
